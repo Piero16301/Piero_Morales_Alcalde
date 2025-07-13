@@ -1,1 +1,3 @@
-export 'view/app.dart';
+export 'cubit/app_cubit.dart';
+export 'global/global.dart';
+export 'view/view.dart';

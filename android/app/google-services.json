@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1016602122999",
+    "project_id": "piero-morales-alcalde",
+    "storage_bucket": "piero-morales-alcalde.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1016602122999:android:758b21d0b4dcbf365f11f2",
+        "android_client_info": {
+          "package_name": "com.pmorales.portfolio"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsHOEDPOy3_09wN2xQohXW3-WrBEWphys"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

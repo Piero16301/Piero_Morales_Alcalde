@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyAxvkB7BZrj3LK6JcKkjqJ5fmCH5Xknm1Q</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1016602122999</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.pmorales.portfolio</string>
+	<key>PROJECT_ID</key>
+	<string>piero-morales-alcalde</string>
+	<key>STORAGE_BUCKET</key>
+	<string>piero-morales-alcalde.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1016602122999:ios:d63e5517d7f0bb7c5f11f2</string>
+</dict>
+</plist>

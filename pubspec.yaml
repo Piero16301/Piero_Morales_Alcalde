@@ -8,20 +8,57 @@ environment:
 
 dependencies:
   bloc: ^9.0.0
+  cloud_firestore: ^5.6.11
+  equatable: ^2.0.7
+  firebase_auth: ^5.6.2
+  firebase_core: ^3.15.1
+  firebase_storage: ^12.4.9
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
+  flutter_dotenv: ^5.2.1
   flutter_localizations:
     sdk: flutter
+  go_router: ^16.0.0
+  google_fonts: ^6.2.1
   intl: ^0.20.2
+  shared_preferences: ^2.5.3
+  user_api:
+    path: packages/user_api
+  user_api_remote:
+    path: packages/user_api_remote
+  user_repository:
+    path: packages/user_repository
 
 dev_dependencies:
   bloc_test: ^10.0.0
+  fake_cloud_firestore: ^3.1.0
+  firebase_core_platform_interface: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
   flutter_test:
     sdk: flutter
   mocktail: ^1.0.4
   very_good_analysis: ^9.0.0
 
+flutter_launcher_icons:
+  image_path: "assets/images/app_global_icon.png"
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  web:
+    generate: true
+    background_color: "transparent"
+  windows:
+    generate: true
+    icon_size: 256
+  macos:
+    generate: true
+    image_path: "assets/images/app_macos_icon.png"
+
 flutter:
   generate: true
   uses-material-design: true
+  
+  assets:
+    - .env
+    - assets/images/
