@@ -33,6 +33,10 @@ class PortfolioHomePage extends StatelessWidget {
               color: Colors.grey.shade200,
             ),
             const HeroSection(),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30),
+              child: Divider(),
+            ),
             const SkillsSection(),
           ],
         ),
@@ -81,6 +85,7 @@ class CustomAppBar extends StatelessWidget {
               child: Row(
                 children: [
                   const NavItem(text: 'About'),
+                  const NavItem(text: 'Skills'),
                   const NavItem(text: 'Education'),
                   const NavItem(text: 'Experience'),
                   const NavItem(text: 'Projects'),
@@ -191,8 +196,8 @@ class _NavItemState extends State<NavItem> with TickerProviderStateMixin {
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 200),
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 8,
+                    horizontal: 10,
+                    vertical: 10,
                   ),
                   decoration: BoxDecoration(
                     color: _isHovered
@@ -228,113 +233,80 @@ class HeroSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Container(
+      margin: const EdgeInsets.all(AppProperties.globalPadding),
+      constraints: const BoxConstraints(
+        minHeight: 400,
+        maxWidth: AppProperties.maxWidth,
+      ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        image: const DecorationImage(
+          image: NetworkImage(
+            'https://lh3.googleusercontent.com/aida-public/AB6AXuDWfs50_zrIc8'
+            'jQGRCjWFmJLyizd0PQEjNAwv-TQXvuF9JJJhCV0df-W3Ig1JNq40OpmDbkxtJtkn'
+            'QC-ERV9SDTvDS_jCGtf6dg9AdKmu5JT7tAyTj8Ltpk8VA-QUhYgeSyodxDuSWEkX'
+            'O9AOnP4QgSR3whs60T-a16bR4OlnDqYRwxCTtpu-D6KhHAr5EiZ-ks2IKAlXo4eB'
+            'Ba6zikthnY09wqLhU3cobOVtmlHxcJcvzRnBSXfrXASIJuk7gFKV2AkOw8fVbY0I'
+            'Vu',
+          ),
+          fit: BoxFit.cover,
+        ),
+      ),
+      clipBehavior: Clip.antiAlias,
       child: Container(
-        margin: const EdgeInsets.all(AppProperties.globalPadding),
-        constraints: const BoxConstraints(
-          minHeight: 500,
-          maxWidth: AppProperties.maxWidth,
-        ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          image: const DecorationImage(
-            image: NetworkImage(
-              'https://lh3.googleusercontent.com/aida-public/AB6AXuDWfs50_zrIc8'
-              'jQGRCjWFmJLyizd0PQEjNAwv-TQXvuF9JJJhCV0df-W3Ig1JNq40OpmDbkxtJtkn'
-              'QC-ERV9SDTvDS_jCGtf6dg9AdKmu5JT7tAyTj8Ltpk8VA-QUhYgeSyodxDuSWEkX'
-              'O9AOnP4QgSR3whs60T-a16bR4OlnDqYRwxCTtpu-D6KhHAr5EiZ-ks2IKAlXo4eB'
-              'Ba6zikthnY09wqLhU3cobOVtmlHxcJcvzRnBSXfrXASIJuk7gFKV2AkOw8fVbY0I'
-              'Vu',
-            ),
-            fit: BoxFit.cover,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color.fromRGBO(143, 163, 163, 0.8),
+              Color.fromRGBO(107, 125, 125, 0.8),
+            ],
           ),
         ),
-        clipBehavior: Clip.antiAlias,
-        child: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color.fromRGBO(143, 163, 163, 0.8),
-                Color.fromRGBO(107, 125, 125, 0.8),
-              ],
+        padding: const EdgeInsets.all(40),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            const Text(
+              "Hi, I'm Piero, a Software Engineer",
+              style: TextStyle(
+                fontSize: 40,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+                height: 1.2,
+                shadows: [
+                  Shadow(
+                    offset: Offset(2, 2),
+                    blurRadius: 4,
+                    color: Colors.black54,
+                  ),
+                ],
+              ),
             ),
-          ),
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              return Padding(
-                padding: const EdgeInsets.all(60),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      "Hi, I'm Piero, a Software Engineer",
-                      style: TextStyle(
-                        fontSize: 48,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        height: 1.2,
-                        shadows: [
-                          Shadow(
-                            offset: Offset(2, 2),
-                            blurRadius: 4,
-                            color: Colors.black54,
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-                    Text(
-                      "I'm a software engineer with a passion for building "
-                      'innovative solutions. I specialize in full-stack '
-                      'development, cloud computing, and machine learning. '
-                      'Explore my portfolio to see my work and learn more '
-                      'about my skills and experience.',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.white.withValues(alpha: 0.9),
-                        height: 1.6,
-                        shadows: const [
-                          Shadow(
-                            offset: Offset(1, 1),
-                            blurRadius: 3,
-                            color: Colors.black54,
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 40),
-                    ElevatedButton(
-                      onPressed: () {
-                        debugPrint('Ver proyectos');
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue[600],
-                        foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 32,
-                          vertical: 16,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        elevation: 4,
-                      ),
-                      child: const Text(
-                        'View Projects',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              );
-            },
-          ),
+            const SizedBox(height: 24),
+            Text(
+              "I'm a software engineer with a passion for building "
+              'innovative solutions. I specialize in full-stack '
+              'development, cloud computing, and machine learning. '
+              'Explore my portfolio to see my work and learn more '
+              'about my skills and experience.',
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.white.withValues(alpha: 0.9),
+                height: 1.6,
+                shadows: const [
+                  Shadow(
+                    offset: Offset(1, 1),
+                    blurRadius: 3,
+                    color: Colors.black54,
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -361,30 +333,54 @@ class SkillsSection extends StatelessWidget {
     ];
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 60),
-      color: Colors.white,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      margin: const EdgeInsets.all(AppProperties.globalPadding),
+      constraints: const BoxConstraints(
+        maxWidth: AppProperties.maxWidth,
+      ),
+      child: Row(
         children: [
-          const Text(
-            'Key Skills',
-            style: TextStyle(
-              fontSize: 32,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Key Skills',
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                LayoutBuilder(
+                  builder: (context, constraints) => Wrap(
+                    spacing: 12,
+                    runSpacing: 12,
+                    children: skills
+                        .map(
+                          (skill) => Chip(
+                            avatar: const Icon(
+                              Icons.qr_code_rounded,
+                              size: 16,
+                            ),
+                            label: Text(
+                              skill,
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            padding: const EdgeInsets.all(5),
+                            backgroundColor: Theme.of(
+                              context,
+                            ).colorScheme.primary.withValues(alpha: 0.1),
+                          ),
+                        )
+                        .toList(),
+                  ),
+                ),
+              ],
             ),
-          ),
-          const SizedBox(height: 40),
-          LayoutBuilder(
-            builder: (context, constraints) {
-              return Wrap(
-                spacing: 12,
-                runSpacing: 12,
-                children: skills
-                    .map((skill) => SkillChip(skill: skill))
-                    .toList(),
-              );
-            },
           ),
         ],
       ),
@@ -446,20 +442,57 @@ class MobilePortfolioPage extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
+            DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Theme.of(context).colorScheme.primary,
               ),
-              child: Text(
-                'Menu',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
+              child: const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CircleAvatar(
+                    radius: 32,
+                    backgroundImage: NetworkImage(
+                      'https://lh3.googleusercontent.com/aida-public/AB6AXuDWfs'
+                      '50_zrIc8jQGRCjWFmJLyizd0PQEjNAwv-TQXvuF9JJJhCV0df-W3Ig1J'
+                      'Nq40OpmDbkxtJtknQC-ERV9SDTvDS_jCGtf6dg9AdKmu5JT7tAyTj8Lt'
+                      'pk8VA-QUhYgeSyodxDuSWEkXO9AOnP4QgSR3whs60T-a16bR4OlnDqYR'
+                      'wxCTtpu-D6KhHAr5EiZ-ks2IKAlXo4eBBa6zikthnY09wqLhU3cobOVt'
+                      'mlHxcJcvzRnBSXfrXASIJuk7gFKV2AkOw8fVbY0IVu',
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  Flexible(
+                    child: Text(
+                      'Piero Angelo Morales Alcalde',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  SizedBox(height: 2),
+                  Text(
+                    'Software Engineer',
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: Colors.white70,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
               ),
             ),
             ListTile(
               title: const Text('About'),
+              onTap: () => Navigator.pop(context),
+            ),
+            ListTile(
+              title: const Text('Skills'),
               onTap: () => Navigator.pop(context),
             ),
             ListTile(
@@ -474,9 +507,117 @@ class MobilePortfolioPage extends StatelessWidget {
               title: const Text('Projects'),
               onTap: () => Navigator.pop(context),
             ),
-            ListTile(
-              title: const Text('Certifications'),
-              onTap: () => Navigator.pop(context),
+            const Divider(),
+            // Sección de contacto como footer
+            Container(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Contact Info',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black87,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.email_outlined,
+                        size: 18,
+                        color: Colors.grey,
+                      ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          'piero.morales@example.com',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey[600],
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.phone_outlined,
+                        size: 18,
+                        color: Colors.grey,
+                      ),
+                      const SizedBox(width: 8),
+                      Text(
+                        '+51 999 888 777',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey[600],
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.location_on_outlined,
+                        size: 18,
+                        color: Colors.grey,
+                      ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          'Lima, Perú',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey[600],
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  // Redes sociales
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          debugPrint('Navegando a LinkedIn');
+                        },
+                        icon: const Icon(Icons.work_outline),
+                        tooltip: 'LinkedIn',
+                        iconSize: 24,
+                        color: Colors.blue[700],
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          debugPrint('Navegando a GitHub');
+                        },
+                        icon: const Icon(Icons.code),
+                        tooltip: 'GitHub',
+                        iconSize: 24,
+                        color: Colors.grey[700],
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          debugPrint('Navegando a WhatsApp');
+                        },
+                        icon: const Icon(Icons.message),
+                        tooltip: 'WhatsApp',
+                        iconSize: 24,
+                        color: Colors.green[600],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ],
         ),
@@ -488,103 +629,12 @@ class MobilePortfolioPage extends StatelessWidget {
               height: 1,
               color: Colors.grey.shade200,
             ),
-            const MobileHeroSection(),
+            const HeroSection(),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30),
+              child: Divider(),
+            ),
             const SkillsSection(),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-// Widget modular para hero section en mobile
-class MobileHeroSection extends StatelessWidget {
-  const MobileHeroSection({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(AppProperties.globalPadding),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        image: const DecorationImage(
-          image: NetworkImage(
-            'https://lh3.googleusercontent.com/aida-public/AB6AXuDWfs50_zrIc8jQ'
-            'GRCjWFmJLyizd0PQEjNAwv-TQXvuF9JJJhCV0df-W3Ig1JNq40OpmDbkxtJtknQC-E'
-            'RV9SDTvDS_jCGtf6dg9AdKmu5JT7tAyTj8Ltpk8VA-QUhYgeSyodxDuSWEkXO9AOnP'
-            '4QgSR3whs60T-a16bR4OlnDqYRwxCTtpu-D6KhHAr5EiZ-ks2IKAlXo4eBBa6zikth'
-            'nY09wqLhU3cobOVtmlHxcJcvzRnBSXfrXASIJuk7gFKV2AkOw8fVbY0IVu',
-          ),
-          fit: BoxFit.cover,
-        ),
-      ),
-      clipBehavior: Clip.antiAlias,
-      child: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color.fromRGBO(143, 163, 163, 0.8),
-              Color.fromRGBO(107, 125, 125, 0.8),
-            ],
-          ),
-        ),
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              "Hi, I'm Piero, a Software Engineer",
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-                height: 1.2,
-                shadows: [
-                  Shadow(
-                    offset: Offset(2, 2),
-                    blurRadius: 4,
-                    color: Colors.black54,
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 16),
-            Text(
-              "I'm a software engineer with a passion for building innovative "
-              'solutions. I specialize in full-stack development, cloud '
-              'computing, and machine learning.',
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.white.withValues(alpha: 0.9),
-                height: 1.6,
-                shadows: const [
-                  Shadow(
-                    offset: Offset(1, 1),
-                    blurRadius: 3,
-                    color: Colors.black54,
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 24),
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue[600],
-                foregroundColor: Colors.white,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 12,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                elevation: 4,
-              ),
-              child: const Text('View Projects'),
-            ),
           ],
         ),
       ),
