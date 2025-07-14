@@ -5,4 +5,9 @@ class AppProperties {
   static const String appLicense = 'MIT License';
 
   static const Duration themeAnimationDuration = Duration(seconds: 1);
+  static const double responsiveBreakpoint = 768;
+  static const double globalPadding = 30;
+  static const double appBarHeight = 55;
+  static const double homeIconSize = 40;
+  static const double maxWidth = 1200;
 }
