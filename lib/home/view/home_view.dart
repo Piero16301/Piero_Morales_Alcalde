@@ -24,11 +24,14 @@ class PortfolioHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(AppProperties.appBarHeight),
+        child: CustomAppBar(),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const CustomAppBar(),
-            Container(
+            Divider(
               height: 1,
               color: Colors.grey.shade200,
             ),
@@ -625,7 +628,7 @@ class MobilePortfolioPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
+            Divider(
               height: 1,
               color: Colors.grey.shade200,
             ),
