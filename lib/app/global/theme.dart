@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
-  static const MaterialColor _seedColor = Colors.green;
+  static const MaterialAccentColor _seedColor = Colors.greenAccent;
   static final TextStyle _globalFont = GoogleFonts.nunito();
 
   static ThemeData lightTheme = ThemeData(
