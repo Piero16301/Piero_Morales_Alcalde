@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:piero_morales_alcalde/app/app.dart';
 
 class HomeDrawer extends StatelessWidget {
   const HomeDrawer({super.key});
@@ -19,13 +20,15 @@ class HomeDrawer extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 32,
-                  backgroundImage: NetworkImage(
-                    'https://lh3.googleusercontent.com/aida-public/AB6AXuDWfs'
-                    '50_zrIc8jQGRCjWFmJLyizd0PQEjNAwv-TQXvuF9JJJhCV0df-W3Ig1J'
-                    'Nq40OpmDbkxtJtknQC-ERV9SDTvDS_jCGtf6dg9AdKmu5JT7tAyTj8Lt'
-                    'pk8VA-QUhYgeSyodxDuSWEkXO9AOnP4QgSR3whs60T-a16bR4OlnDqYR'
-                    'wxCTtpu-D6KhHAr5EiZ-ks2IKAlXo4eBBa6zikthnY09wqLhU3cobOVt'
-                    'mlHxcJcvzRnBSXfrXASIJuk7gFKV2AkOw8fVbY0IVu',
+                  child: NetworkImageWithFallback(
+                    imageUrl:
+                        'https://lh3.googleusercontent.com/aida-public/AB6AXuDW'
+                        'fs50_zrIc8jQGRCjWFmJLyizd0PQEjNAwv-TQXvuF9JJJhCV0df-W3'
+                        'Ig1JNq40OpmDbkxtJtknQC-ERV9SDTvDS_jCGtf6dg9AdKmu5JT7tA'
+                        'yTj8Ltpk8VA-QUhYgeSyodxDuSWEkXO9AOnP4QgSR3whs60T-a16bR'
+                        '4OlnDqYRwxCTtpu-D6KhHAr5EiZ-ks2IKAlXo4eBBa6zikthnY09wq'
+                        'LhU3cobOVtmlHxcJcvzRnBSXfrXASIJuk7gFKV2AkOw8fVbY0IVu',
+                    borderRadius: 32,
                   ),
                 ),
                 SizedBox(height: 8),
