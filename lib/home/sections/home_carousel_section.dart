@@ -1,17 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:piero_morales_alcalde/app/app.dart';
 
-class HomeCarouselSection extends StatelessWidget {
+class HomeCarouselSection extends StatefulWidget {
   const HomeCarouselSection({super.key});
+
+  @override
+  State<HomeCarouselSection> createState() => _HomeCarouselSectionState();
+}
+
+class _HomeCarouselSectionState extends State<HomeCarouselSection> {
+  late CarouselController _carouselController;
+
+  @override
+  void initState() {
+    _carouselController = CarouselController();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final appBarHeight = AppBar().preferredSize.height;
+    final availableWidth = MediaQuery.of(context).size.width;
+    return SizedBox(
+      height: MediaQuery.of(context).size.height - appBarHeight,
+      child: CarouselView(
+        controller: _carouselController,
+        itemExtent: availableWidth,
+        children: const [
+          HomeCarouselItem(),
+          HomeCarouselItem(),
+          HomeCarouselItem(),
+          HomeCarouselItem(),
+        ],
+      ),
+    );
+  }
+}
+
+class HomeCarouselItem extends StatelessWidget {
+  const HomeCarouselItem({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(AppProperties.globalPadding),
-      constraints: const BoxConstraints(
-        maxWidth: AppProperties.maxWidth,
-        minHeight: 400,
-      ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
       ),
@@ -26,9 +58,6 @@ class HomeCarouselSection extends StatelessWidget {
             ),
           ),
           Container(
-            constraints: const BoxConstraints(
-              minHeight: 400,
-            ),
             decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
@@ -42,7 +71,7 @@ class HomeCarouselSection extends StatelessWidget {
             padding: const EdgeInsets.all(40),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
                   "Hi, I'm Piero, a Software Engineer",
@@ -59,6 +88,8 @@ class HomeCarouselSection extends StatelessWidget {
                       ),
                     ],
                   ),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
                 ),
                 const SizedBox(height: 24),
                 Text(
@@ -79,6 +110,8 @@ class HomeCarouselSection extends StatelessWidget {
                       ),
                     ],
                   ),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 3,
                 ),
               ],
             ),
