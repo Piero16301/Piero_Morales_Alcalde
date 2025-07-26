@@ -2,35 +2,44 @@ import 'package:flutter/material.dart';
 import 'package:piero_morales_alcalde/app/app.dart';
 
 class HomeCarouselSection extends StatefulWidget {
-  const HomeCarouselSection({super.key});
+  const HomeCarouselSection({
+    required this.isMobile,
+    super.key,
+  });
+
+  final bool isMobile;
 
   @override
   State<HomeCarouselSection> createState() => _HomeCarouselSectionState();
 }
 
 class _HomeCarouselSectionState extends State<HomeCarouselSection> {
-  late CarouselController _carouselController;
+  late PageController _pageController;
 
   @override
   void initState() {
-    _carouselController = CarouselController();
+    _pageController = PageController();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final appBarHeight = AppBar().preferredSize.height;
-    final availableWidth = MediaQuery.of(context).size.width;
     return SizedBox(
       height: MediaQuery.of(context).size.height - appBarHeight,
-      child: CarouselView(
-        controller: _carouselController,
-        itemExtent: availableWidth,
-        children: const [
-          HomeCarouselItem(),
-          HomeCarouselItem(),
-          HomeCarouselItem(),
-          HomeCarouselItem(),
+      child: PageView(
+        controller: _pageController,
+        children: [
+          HomeCarouselItem(isMobile: widget.isMobile),
+          HomeCarouselItem(isMobile: widget.isMobile),
+          HomeCarouselItem(isMobile: widget.isMobile),
+          HomeCarouselItem(isMobile: widget.isMobile),
         ],
       ),
     );
@@ -38,12 +47,19 @@ class _HomeCarouselSectionState extends State<HomeCarouselSection> {
 }
 
 class HomeCarouselItem extends StatelessWidget {
-  const HomeCarouselItem({super.key});
+  const HomeCarouselItem({
+    required this.isMobile,
+    super.key,
+  });
+
+  final bool isMobile;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(AppProperties.globalPadding),
+      margin: isMobile
+          ? AppProperties.mobilePadding
+          : AppProperties.desktopPadding,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
       ),

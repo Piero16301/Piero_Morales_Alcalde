@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:piero_morales_alcalde/app/app.dart';
 
 class HomeSkillsSection extends StatelessWidget {
-  const HomeSkillsSection({super.key});
+  const HomeSkillsSection({
+    required this.isMobile,
+    super.key,
+  });
+
+  final bool isMobile;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +25,9 @@ class HomeSkillsSection extends StatelessWidget {
     ];
 
     return Container(
-      margin: const EdgeInsets.all(AppProperties.globalPadding),
+      margin: isMobile
+          ? AppProperties.mobilePadding
+          : AppProperties.desktopPadding,
       constraints: const BoxConstraints(
         maxWidth: AppProperties.maxWidth,
       ),

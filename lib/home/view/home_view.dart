@@ -34,8 +34,8 @@ class HomeDesktopPage extends StatelessWidget {
         itemCount: 2,
         itemBuilder: (context, index) {
           return switch (index) {
-            0 => const HomeCarouselSection(),
-            1 => const HomeSkillsSection(),
+            0 => const HomeCarouselSection(isMobile: false),
+            1 => const HomeSkillsSection(isMobile: false),
             _ => const SizedBox.shrink(),
           };
         },
@@ -62,8 +62,8 @@ class HomeMobilePage extends StatelessWidget {
         itemCount: 2,
         itemBuilder: (context, index) {
           return switch (index) {
-            0 => const HomeCarouselSection(),
-            1 => const HomeSkillsSection(),
+            0 => const HomeCarouselSection(isMobile: true),
+            1 => const HomeSkillsSection(isMobile: true),
             _ => const SizedBox.shrink(),
           };
         },
