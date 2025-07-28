@@ -115,6 +115,10 @@ jobs:
           very_good packages get --recursive
       - name: 🛠️ Build the application
         run: flutter build web -t lib/main.dart
+      - name: 📄 Copy .env to build assets
+        run: |
+          mkdir -p build/web/assets
+          cp .env build/web/assets/.env
       - name: ⬇️ Archive Production Artifact
         uses: actions/upload-artifact@master
         with:

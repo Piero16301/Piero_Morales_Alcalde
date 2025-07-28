@@ -12,7 +12,12 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Load .env file
-  await dotenv.load(fileName: './.env');
+  try {
+    await dotenv.load();
+  } on Exception catch (e) {
+    // In case .env file is not found, continue with default values
+    debugPrint('Warning: .env file not found, using default values: $e');
+  }
 
   // Initialize Firebase with the default options
   await Firebase.initializeApp(
