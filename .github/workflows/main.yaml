@@ -67,6 +67,9 @@ jobs:
         run: |
           echo "# Temporary .env file for CI/CD" > .env
           echo "API_BASE_URL=https://api.example.com" >> .env
+      - name: 📄 Copy .env to assets
+        run: |
+          cp .env assets/.env
       - name: 📦 Install Dependencies
         run: |
           flutter pub global activate very_good_cli
@@ -109,6 +112,9 @@ jobs:
           echo "WEB_AUTH_DOMAIN=${{ secrets.WEB_AUTH_DOMAIN }}" >> .env
           echo "WEB_STORAGE_BUCKET=${{ secrets.WEB_STORAGE_BUCKET }}" >> .env
           echo "WEB_MEASUREMENT_ID=${{ secrets.WEB_MEASUREMENT_ID }}" >> .env
+      - name: 📄 Copy .env to assets
+        run: |
+          cp .env assets/.env
       - name: 📦 Install Dependencies
         run: |
           flutter pub global activate very_good_cli

@@ -13,7 +13,7 @@ Future<void> main() async {
 
   // Load .env file
   try {
-    await dotenv.load();
+    await dotenv.load(fileName: 'assets/.env');
   } on Exception catch (e) {
     // In case .env file is not found, continue with default values
     debugPrint('Warning: .env file not found, using default values: $e');
