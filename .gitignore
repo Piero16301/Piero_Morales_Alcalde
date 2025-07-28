@@ -116,4 +116,4 @@ app.*.map.json
 lib/l10n/gen/
 
 # Environment files
-.env
+lib/firebase_options.dart
