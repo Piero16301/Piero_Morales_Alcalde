@@ -1,6 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:piero_morales_alcalde/app/app.dart';
 import 'package:piero_morales_alcalde/bootstrap.dart';
 import 'package:piero_morales_alcalde/firebase_options.dart';
@@ -10,14 +9,6 @@ import 'package:user_repository/user_repository.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  // Load .env file
-  try {
-    await dotenv.load();
-  } on Exception catch (e) {
-    // In case .env file is not found, continue with default values
-    debugPrint('Warning: .env file not found, using default values: $e');
-  }
 
   // Initialize Firebase with the default options
   await Firebase.initializeApp(
