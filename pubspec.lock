@@ -413,6 +413,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.2"
+  hugeicons:
+    dependency: "direct main"
+    description:
+      name: hugeicons
+      sha256: cf172bae0c3ff2e2114324d05e79872081f4cd3c009f5979285fec73a693096a
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.11"
   image:
     dependency: transitive
     description:
@@ -882,6 +890,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.8"
+  test_coverage_badge:
+    dependency: "direct dev"
+    description:
+      name: test_coverage_badge
+      sha256: "3909beb9c06a40bd7bb74f23263eda0cfc1831055c3102f984790b8d45aa290c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.2"
   tuple:
     dependency: transitive
     description:

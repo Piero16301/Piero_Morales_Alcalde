@@ -12,25 +12,26 @@ class HomeSkillsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const skills = <String>[
-      'Full-Stack Development',
-      'Cloud Computing',
-      'Machine Learning',
-      'Data Analysis',
-      'Python',
-      'Java',
-      'JavaScript',
-      'React',
-      'AWS',
-      'Azure',
+      'Programación Orientada a Objetos',
+      'Desarrollo Web',
+      'Bases de Datos',
+      'Control de Versiones (Git)',
+      'Arquitectura de Software',
+      'Testing y Debugging',
+      'APIs y Servicios Web',
+      'Metodologías Ágiles',
+      'Estructuras de Datos y Algoritmos',
+      'DevOps y CI/CD',
     ];
-
+    final appBarHeight = AppBar().preferredSize.height;
+    final differential =
+        2 * appBarHeight -
+        (isMobile ? AppProperties.mobilePadding.vertical / 2 : 0);
     return Container(
       margin: isMobile
           ? AppProperties.mobilePadding
           : AppProperties.desktopPadding,
-      constraints: const BoxConstraints(
-        maxWidth: AppProperties.maxWidth,
-      ),
+      height: MediaQuery.of(context).size.height - differential,
       child: Row(
         children: [
           Expanded(
