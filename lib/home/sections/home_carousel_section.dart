@@ -14,6 +14,7 @@ class HomeCarouselSection extends StatefulWidget {
 }
 
 class _HomeCarouselSectionState extends State<HomeCarouselSection> {
+  static const double _sectionHeight = 450;
   late PageController _pageController;
 
   @override
@@ -30,9 +31,8 @@ class _HomeCarouselSectionState extends State<HomeCarouselSection> {
 
   @override
   Widget build(BuildContext context) {
-    final appBarHeight = AppBar().preferredSize.height;
     return SizedBox(
-      height: MediaQuery.of(context).size.height - appBarHeight,
+      height: _sectionHeight,
       child: PageView(
         controller: _pageController,
         children: [
@@ -87,7 +87,7 @@ class HomeCarouselItem extends StatelessWidget {
             padding: const EdgeInsets.all(40),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 const Text(
                   "Hi, I'm Piero, a Software Engineer",

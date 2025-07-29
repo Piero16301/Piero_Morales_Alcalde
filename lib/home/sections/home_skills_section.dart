@@ -23,15 +23,10 @@ class HomeSkillsSection extends StatelessWidget {
       'Estructuras de Datos y Algoritmos',
       'DevOps y CI/CD',
     ];
-    final appBarHeight = AppBar().preferredSize.height;
-    final differential =
-        2 * appBarHeight -
-        (isMobile ? AppProperties.mobilePadding.vertical / 2 : 0);
     return Container(
       margin: isMobile
           ? AppProperties.mobilePadding
           : AppProperties.desktopPadding,
-      height: MediaQuery.of(context).size.height - differential,
       child: Row(
         children: [
           Expanded(

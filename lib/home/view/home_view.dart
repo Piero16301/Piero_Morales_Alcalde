@@ -31,11 +31,12 @@ class HomeDesktopPage extends StatelessWidget {
       ),
       drawer: const HomeDrawer(),
       body: ListView.separated(
-        itemCount: 2,
+        itemCount: 3,
         itemBuilder: (context, index) {
           return switch (index) {
             0 => const HomeCarouselSection(isMobile: false),
             1 => const HomeSkillsSection(isMobile: false),
+            2 => const HomeEducationSection(isMobile: false),
             _ => const SizedBox.shrink(),
           };
         },
@@ -59,11 +60,12 @@ class HomeMobilePage extends StatelessWidget {
       ),
       drawer: const HomeDrawer(),
       body: ListView.separated(
-        itemCount: 2,
+        itemCount: 3,
         itemBuilder: (context, index) {
           return switch (index) {
             0 => const HomeCarouselSection(isMobile: true),
             1 => const HomeSkillsSection(isMobile: true),
+            2 => const HomeEducationSection(isMobile: true),
             _ => const SizedBox.shrink(),
           };
         },
