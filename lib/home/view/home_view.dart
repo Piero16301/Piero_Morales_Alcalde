@@ -11,61 +11,38 @@ class HomeView extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth > AppProperties.responsiveBreakpoint) {
-          return const HomeDesktopPage();
+          return const HomeSwitcherPage(isMobile: false);
         } else {
-          return const HomeMobilePage();
+          return const HomeSwitcherPage(isMobile: true);
         }
       },
     );
   }
 }
 
-class HomeDesktopPage extends StatelessWidget {
-  const HomeDesktopPage({super.key});
+class HomeSwitcherPage extends StatelessWidget {
+  const HomeSwitcherPage({
+    required this.isMobile,
+    super.key,
+  });
+
+  final bool isMobile;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const HomeDesktopAppBar(),
+        title: isMobile ? const HomeMobileAppBar() : const HomeDesktopAppBar(),
       ),
       drawer: const HomeDrawer(),
       body: ListView.separated(
-        itemCount: 3,
+        itemCount: 4,
         itemBuilder: (context, index) {
           return switch (index) {
-            0 => const HomeCarouselSection(isMobile: false),
-            1 => const HomeSkillsSection(isMobile: false),
-            2 => const HomeEducationSection(isMobile: false),
-            _ => const SizedBox.shrink(),
-          };
-        },
-        separatorBuilder: (context, index) => const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30),
-          child: Divider(),
-        ),
-      ),
-    );
-  }
-}
-
-class HomeMobilePage extends StatelessWidget {
-  const HomeMobilePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const HomeMobileAppBar(),
-      ),
-      drawer: const HomeDrawer(),
-      body: ListView.separated(
-        itemCount: 3,
-        itemBuilder: (context, index) {
-          return switch (index) {
-            0 => const HomeCarouselSection(isMobile: true),
-            1 => const HomeSkillsSection(isMobile: true),
-            2 => const HomeEducationSection(isMobile: true),
+            0 => HomeCarouselSection(isMobile: isMobile),
+            1 => HomeSkillsSection(isMobile: isMobile),
+            2 => HomeEducationSection(isMobile: isMobile),
+            3 => HomeExperienceSection(isMobile: isMobile),
             _ => const SizedBox.shrink(),
           };
         },
