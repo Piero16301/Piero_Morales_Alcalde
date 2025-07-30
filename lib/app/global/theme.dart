@@ -19,9 +19,8 @@ class AppTheme {
     ),
     cardTheme: CardThemeData(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(8),
       ),
-      color: _seedColor.withValues(alpha: 0.3),
       elevation: 0,
     ),
     inputDecorationTheme: const InputDecorationTheme(
@@ -46,9 +45,8 @@ class AppTheme {
     ),
     cardTheme: CardThemeData(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(8),
       ),
-      color: _seedColor.withValues(alpha: 0.3),
       elevation: 0,
     ),
     inputDecorationTheme: const InputDecorationTheme(
