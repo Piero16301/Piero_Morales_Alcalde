@@ -58,10 +58,6 @@ class HomeDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
-            title: const Text('About'),
-            onTap: () => Navigator.pop(context),
-          ),
-          ListTile(
             title: const Text('Skills'),
             onTap: () => Navigator.pop(context),
           ),
@@ -75,6 +71,10 @@ class HomeDrawer extends StatelessWidget {
           ),
           ListTile(
             title: const Text('Projects'),
+            onTap: () => Navigator.pop(context),
+          ),
+          ListTile(
+            title: const Text('Certifications'),
             onTap: () => Navigator.pop(context),
           ),
           const Divider(),

@@ -20,4 +20,7 @@ class AppProperties {
   static const double homeIconSize = 40;
   static const double maxWidth = 1200;
   static const double carouselItemExtent = 300;
+
+  static const Duration autoScrollDuration = Duration(seconds: 10);
+  static const Duration transitionDuration = Duration(milliseconds: 800);
 }

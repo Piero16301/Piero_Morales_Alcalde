@@ -34,7 +34,7 @@ class HomeSkillsSection extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  'Key Skills',
+                  'Skills',
                   style: TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,

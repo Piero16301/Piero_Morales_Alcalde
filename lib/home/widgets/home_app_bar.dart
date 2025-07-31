@@ -33,11 +33,11 @@ class HomeDesktopAppBar extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                const HomeNavItem(text: 'About'),
                 const HomeNavItem(text: 'Skills'),
                 const HomeNavItem(text: 'Education'),
                 const HomeNavItem(text: 'Experience'),
                 const HomeNavItem(text: 'Projects'),
+                const HomeNavItem(text: 'Certifications'),
                 Container(
                   margin: const EdgeInsets.only(left: 12),
                   child: ElevatedButton(
