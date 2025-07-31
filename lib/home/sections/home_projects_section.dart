@@ -1,13 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:piero_morales_alcalde/app/app.dart';
+import 'package:piero_morales_alcalde/home/widgets/widgets.dart';
 
-class HomeProjectsSection extends StatelessWidget {
+class HomeProjectsSection extends StatefulWidget {
   const HomeProjectsSection({
     required this.isMobile,
     super.key,
   });
 
   final bool isMobile;
+
+  @override
+  State<HomeProjectsSection> createState() => _HomeProjectsSectionState();
+}
+
+class _HomeProjectsSectionState extends State<HomeProjectsSection> {
+  static const Map<String, List<String>> _projectImages = {
+    'Project Alpha': [
+      'https://picsum.photos/300/200?random=1',
+      'https://picsum.photos/300/200?random=2',
+      'https://picsum.photos/300/200?random=3',
+    ],
+    'Project Beta': [
+      'https://picsum.photos/300/200?random=4',
+      'https://picsum.photos/300/200?random=5',
+      'https://picsum.photos/300/200?random=6',
+    ],
+    'Project Gamma': [
+      'https://picsum.photos/300/200?random=7',
+      'https://picsum.photos/300/200?random=8',
+      'https://picsum.photos/300/200?random=9',
+    ],
+    'Project Delta': [
+      'https://picsum.photos/300/200?random=10',
+      'https://picsum.photos/300/200?random=11',
+      'https://picsum.photos/300/200?random=12',
+    ],
+    'Project Epsilon': [
+      'https://picsum.photos/300/200?random=13',
+      'https://picsum.photos/300/200?random=14',
+      'https://picsum.photos/300/200?random=15',
+    ],
+  };
 
   static const List<Map<String, String>> _projects = [
     {
@@ -50,7 +84,7 @@ class HomeProjectsSection extends StatelessWidget {
           'visualizations, and export capabilities. Designed for business '
           'analysts and decision-makers to understand market dynamics and '
           'trends.',
-      'status': 'Completed',
+      'status': 'In Production',
       'year': '2023',
     },
     {
@@ -59,9 +93,10 @@ class HomeProjectsSection extends StatelessWidget {
       'technologies': 'Vue.js, Laravel',
       'description':
           'A comprehensive e-commerce platform built with Vue.js and Laravel. '
-          'Features include product catalog management, secure payment processing, '
-          'order tracking, and customer reviews. The platform supports multiple '
-          'vendors and includes admin dashboard for inventory management.',
+          'Features include product catalog management, secure payment '
+          'processing, order tracking, and customer reviews. The platform '
+          'supports multiple vendors and includes admin dashboard for inventory'
+          ' management.',
       'status': 'Completed',
       'year': '2023',
     },
@@ -70,10 +105,10 @@ class HomeProjectsSection extends StatelessWidget {
       'category': 'Machine Learning',
       'technologies': 'Python, TensorFlow',
       'description':
-          'A machine learning project for image recognition and classification. '
-          'Built using Python and TensorFlow, the system can identify and categorize '
-          'objects in real-time. Includes a web interface for uploading images and '
-          'viewing results with confidence scores.',
+          'A machine learning project for image recognition and classification.'
+          ' Built using Python and TensorFlow, the system can identify and '
+          'categorize objects in real-time. Includes a web interface for '
+          'uploading images and viewing results with confidence scores.',
       'status': 'In Progress',
       'year': '2024',
     },
@@ -82,7 +117,7 @@ class HomeProjectsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: isMobile
+      margin: widget.isMobile
           ? AppProperties.mobilePadding
           : AppProperties.desktopPadding,
       child: Column(
@@ -104,7 +139,7 @@ class HomeProjectsSection extends StatelessWidget {
   }
 
   Widget _buildProjectsScroll(BuildContext context) {
-    return isMobile
+    return widget.isMobile
         ? Column(
             children: _projects
                 .map(
@@ -154,353 +189,343 @@ class HomeProjectsSection extends StatelessWidget {
     required String status,
     required String year,
   }) {
-    Color cardColor;
+    List<IconData> getTechnologyIcons(String technologies) {
+      final techIconMap = {
+        'React': Icons.web,
+        'Node.js': Icons.storage,
+        'Swift': Icons.phone_iphone,
+        'Firebase': Icons.cloud,
+        'Python': Icons.code,
+        'Tableau': Icons.bar_chart,
+        'Vue.js': Icons.web_asset,
+        'Laravel': Icons.api,
+        'TensorFlow': Icons.psychology,
+        'JavaScript': Icons.javascript,
+        'TypeScript': Icons.keyboard,
+        'Flutter': Icons.flutter_dash,
+        'Dart': Icons.apps,
+        'MongoDB': Icons.storage_outlined,
+        'PostgreSQL': Icons.table_view,
+      };
 
-    switch (name) {
-      case 'Project Alpha':
-        cardColor = const Color(0xFFB8E6B8);
-      case 'Project Beta':
-        cardColor = const Color(0xFFFFD4B8);
-      case 'Project Gamma':
-        cardColor = const Color(0xFFB8E6E6);
-      case 'Project Delta':
-        cardColor = const Color(0xFFE6B8FF);
-      case 'Project Epsilon':
-        cardColor = const Color(0xFFFFE6B8);
-      default:
-        cardColor = Theme.of(
-          context,
-        ).colorScheme.primary.withValues(alpha: 0.1);
+      final fallbackIcons = [
+        Icons.build,
+        Icons.settings,
+        Icons.memory,
+        Icons.developer_mode,
+        Icons.integration_instructions,
+        Icons.terminal,
+        Icons.code_off,
+        Icons.construction,
+      ];
+
+      final techList = technologies.split(', ');
+      final icons = <IconData>[];
+
+      for (final tech in techList) {
+        if (techIconMap.containsKey(tech)) {
+          icons.add(techIconMap[tech]!);
+        } else {
+          icons.add(fallbackIcons[icons.length % fallbackIcons.length]);
+        }
+      }
+
+      return icons;
     }
 
-    return Card(
-      margin: EdgeInsets.only(bottom: isMobile ? 16 : 0),
-      elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Container(
-        height: isMobile ? null : 320,
-        decoration: BoxDecoration(
-          color: cardColor,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: isMobile
-              ? Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      flex: 2,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            name,
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context).colorScheme.onSurface,
-                            ),
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            '$category | $technologies',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Theme.of(
-                                context,
-                              ).colorScheme.onSurface.withValues(alpha: 0.6),
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            description.length > 100
-                                ? '${description.substring(0, 97)}...'
-                                : description,
-                            style: TextStyle(
-                              fontSize: 13,
-                              height: 1.3,
-                              color: Theme.of(
-                                context,
-                              ).colorScheme.onSurface.withValues(alpha: 0.8),
-                            ),
-                            maxLines: 4,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(width: 16),
-                    Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.3),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: _buildProjectMockup(name),
-                    ),
-                  ],
-                )
-              : Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      height: 140,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.3),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: _buildProjectMockup(name),
-                    ),
-                    const SizedBox(height: 16),
-                    Text(
-                      name,
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).colorScheme.onSurface,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Expanded(
-                      child: Text(
-                        description.length > 120
-                            ? '${description.substring(0, 117)}...'
-                            : description,
-                        style: TextStyle(
-                          fontSize: 14,
-                          height: 1.4,
-                          color: Theme.of(
-                            context,
-                          ).colorScheme.onSurface.withValues(alpha: 0.8),
-                        ),
-                        maxLines: 4,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ],
-                ),
-        ),
-      ),
-    );
-  }
+    ({String text, Color color, Color backgroundColor}) getStatusInfo() {
+      switch (status) {
+        case 'Completed':
+          return (
+            text: 'Terminado',
+            color: Colors.green[700]!,
+            backgroundColor: Colors.green.withValues(alpha: 0.2),
+          );
+        case 'In Progress':
+          return (
+            text: 'En proceso',
+            color: Colors.orange[700]!,
+            backgroundColor: Colors.orange.withValues(alpha: 0.2),
+          );
+        case 'In Production':
+          return (
+            text: 'En producción',
+            color: Colors.blue[700]!,
+            backgroundColor: Colors.blue.withValues(alpha: 0.2),
+          );
+        default:
+          return (
+            text: status,
+            color: Colors.grey[700]!,
+            backgroundColor: Colors.grey.withValues(alpha: 0.2),
+          );
+      }
+    }
 
-  Widget _buildProjectMockup(String projectName) {
-    switch (projectName) {
-      case 'Project Alpha':
-        return Container(
-          padding: const EdgeInsets.all(8),
-          child: Column(
-            children: [
-              Container(
-                height: 12,
-                decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.8),
-                  borderRadius: BorderRadius.circular(2),
-                ),
-              ),
-              const SizedBox(height: 6),
-              Expanded(
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 2,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white.withValues(alpha: 0.6),
-                          borderRadius: BorderRadius.circular(2),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 4),
-                    Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white.withValues(alpha: 0.4),
-                          borderRadius: BorderRadius.circular(2),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        );
-      case 'Project Beta':
-        return Container(
-          padding: const EdgeInsets.all(12),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                width: 40,
-                height: 40,
-                decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.6),
-                  shape: BoxShape.circle,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: List.generate(
-                  3,
-                  (index) => Container(
-                    width: 12,
-                    height: 4,
-                    decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: 0.5),
-                      borderRadius: BorderRadius.circular(2),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        );
-      case 'Project Gamma':
-        return Container(
-          padding: const EdgeInsets.all(8),
-          child: Column(
-            children: [
-              Container(
-                height: 12,
-                decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.8),
-                  borderRadius: BorderRadius.circular(2),
-                ),
-              ),
-              const SizedBox(height: 6),
-              Expanded(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    _buildChartBar(0.6, compact: true),
-                    _buildChartBar(0.8, compact: true),
-                    _buildChartBar(0.4, compact: true),
-                    _buildChartBar(0.9, compact: true),
-                    _buildChartBar(0.7, compact: true),
-                    _buildChartBar(1.0, compact: true),
-                    _buildChartBar(0.5, compact: true),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        );
-      case 'Project Delta':
-        return Container(
-          padding: const EdgeInsets.all(8),
-          child: Column(
-            children: [
-              Container(
-                height: 10,
-                decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.8),
-                  borderRadius: BorderRadius.circular(2),
-                ),
-              ),
-              const SizedBox(height: 6),
-              Expanded(
-                child: GridView.count(
-                  crossAxisCount: 3,
-                  crossAxisSpacing: 2,
-                  mainAxisSpacing: 2,
-                  physics: const NeverScrollableScrollPhysics(),
-                  children: List.generate(
-                    6,
-                    (index) => Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.5),
-                        borderRadius: BorderRadius.circular(2),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        );
-      case 'Project Epsilon':
-        return Container(
-          padding: const EdgeInsets.all(8),
-          child: Column(
-            children: [
-              Container(
-                height: 10,
-                decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.8),
-                  borderRadius: BorderRadius.circular(2),
-                ),
-              ),
-              const SizedBox(height: 6),
-              Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.6),
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Center(
-                    child: Container(
-                      width: 24,
-                      height: 24,
-                      decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.8),
-                        shape: BoxShape.circle,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 6),
-              Row(
+    final statusInfo = getStatusInfo();
+    final techIcons = getTechnologyIcons(technologies);
+
+    return Card(
+      margin: const EdgeInsets.only(bottom: 16),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: widget.isMobile
+            ? Row(
+                spacing: 16,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
-                    child: Container(
-                      height: 12,
-                      decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.7),
-                        borderRadius: BorderRadius.circular(2),
-                      ),
+                    flex: 2,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                name,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(
+                                    context,
+                                  ).colorScheme.onSurface,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                                vertical: 4,
+                              ),
+                              decoration: BoxDecoration(
+                                color: statusInfo.backgroundColor,
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: Text(
+                                statusInfo.text,
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                  color: statusInfo.color,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 4),
+                        Row(
+                          children: [
+                            Text(
+                              category,
+                              style: TextStyle(
+                                fontSize: 14,
+                                color:
+                                    Theme.of(
+                                      context,
+                                    ).colorScheme.onSurface.withValues(
+                                      alpha: 0.7,
+                                    ),
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            Text(
+                              '|',
+                              style: TextStyle(
+                                fontSize: 14,
+                                color:
+                                    Theme.of(
+                                      context,
+                                    ).colorScheme.onSurface.withValues(
+                                      alpha: 0.5,
+                                    ),
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            Expanded(
+                              child: Row(
+                                children: techIcons.take(3).map((icon) {
+                                  return Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: 6,
+                                    ),
+                                    child: Icon(
+                                      icon,
+                                      size: 16,
+                                      color: Theme.of(
+                                        context,
+                                      ).colorScheme.primary,
+                                    ),
+                                  );
+                                }).toList(),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          description.length > 100
+                              ? '${description.substring(0, 97)}...'
+                              : description,
+                          style: TextStyle(
+                            fontSize: 14,
+                            height: 1.4,
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.onSurface.withValues(alpha: 0.8),
+                          ),
+                          maxLines: 4,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
                     ),
                   ),
-                  const SizedBox(width: 4),
-                  Expanded(
-                    child: Container(
-                      height: 12,
-                      decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.5),
-                        borderRadius: BorderRadius.circular(2),
+                  Container(
+                    width: 200,
+                    height: 100,
+                    decoration: BoxDecoration(
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.primary.withValues(alpha: 0.05),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: HomeImageCarousel(
+                      images: _projectImages[name] ?? [],
+                    ),
+                  ),
+                ],
+              )
+            : Column(
+                spacing: 16,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    name,
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: Theme.of(
+                                        context,
+                                      ).colorScheme.onSurface,
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 8,
+                                    vertical: 4,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: statusInfo.backgroundColor,
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  child: Text(
+                                    statusInfo.text,
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w600,
+                                      color: statusInfo.color,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 4),
+                            Row(
+                              children: [
+                                Text(
+                                  category,
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color:
+                                        Theme.of(
+                                          context,
+                                        ).colorScheme.onSurface.withValues(
+                                          alpha: 0.7,
+                                        ),
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                const SizedBox(width: 8),
+                                Text(
+                                  '|',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color:
+                                        Theme.of(
+                                          context,
+                                        ).colorScheme.onSurface.withValues(
+                                          alpha: 0.5,
+                                        ),
+                                  ),
+                                ),
+                                const SizedBox(width: 8),
+                                Expanded(
+                                  child: Row(
+                                    children: techIcons.map((icon) {
+                                      return Padding(
+                                        padding: const EdgeInsets.only(
+                                          right: 8,
+                                        ),
+                                        child: Icon(
+                                          icon,
+                                          size: 18,
+                                          color: Theme.of(
+                                            context,
+                                          ).colorScheme.primary,
+                                        ),
+                                      );
+                                    }).toList(),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
+                    ],
+                  ),
+                  Container(
+                    height: 140,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.primary.withValues(alpha: 0.05),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: HomeImageCarousel(
+                      images: _projectImages[name] ?? [],
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(
+                      description,
+                      style: TextStyle(
+                        fontSize: 14,
+                        height: 1.4,
+                        color: Theme.of(
+                          context,
+                        ).colorScheme.onSurface.withValues(alpha: 0.8),
+                      ),
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                 ],
               ),
-            ],
-          ),
-        );
-      default:
-        return const SizedBox();
-    }
-  }
-
-  Widget _buildChartBar(double height, {bool compact = false}) {
-    final barHeight = compact ? 40 * height : 60 * height;
-    return Container(
-      width: compact ? 4 : 8,
-      height: barHeight,
-      decoration: BoxDecoration(
-        color: Colors.teal.withValues(alpha: 0.7),
-        borderRadius: BorderRadius.circular(1),
       ),
     );
   }
