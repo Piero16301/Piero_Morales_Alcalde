@@ -145,68 +145,77 @@ class HomeExperienceSection extends StatelessWidget {
     required String period,
     required bool isLast,
   }) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Column(
-          children: [
-            Container(
-              width: 12,
-              height: 12,
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primary,
-                shape: BoxShape.circle,
-              ),
-            ),
-            if (!isLast)
-              Container(
-                width: 2,
-                height: 60,
-                color: Theme.of(
-                  context,
-                ).colorScheme.primary.withValues(alpha: 0.3),
-              ),
-          ],
-        ),
-        const SizedBox(width: 16),
-        Expanded(
-          child: Padding(
-            padding: EdgeInsets.only(bottom: isLast ? 0 : 24),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  position,
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.onSurface,
+    return IntrinsicHeight(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Column(
+            children: [
+              SizedBox(
+                height: 14,
+                child: Align(
+                  child: Container(
+                    width: 12,
+                    height: 12,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.primary,
+                      shape: BoxShape.circle,
+                    ),
                   ),
                 ),
-                const SizedBox(height: 2),
-                Text(
-                  company,
-                  style: TextStyle(
-                    fontSize: 13,
+              ),
+              // Línea conectora
+              if (!isLast)
+                Expanded(
+                  child: Container(
+                    width: 2,
                     color: Theme.of(
                       context,
-                    ).colorScheme.onSurface.withValues(alpha: 0.7),
+                    ).colorScheme.primary.withValues(alpha: 0.3),
                   ),
                 ),
-                const SizedBox(height: 2),
-                Text(
-                  period,
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Theme.of(context).colorScheme.primary,
-                    fontWeight: FontWeight.w500,
+            ],
+          ),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(bottom: isLast ? 0 : 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    position,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
                   ),
-                ),
-              ],
+                  const SizedBox(height: 2),
+                  Text(
+                    company,
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.onSurface.withValues(alpha: 0.7),
+                    ),
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    period,
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Theme.of(context).colorScheme.primary,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -235,67 +244,78 @@ class HomeExperienceSection extends StatelessWidget {
   }) {
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
-      color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Row(
-          spacing: 16,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              width: 60,
-              height: 60,
-              decoration: BoxDecoration(
-                color: Theme.of(
-                  context,
-                ).colorScheme.primary.withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Icon(
-                Icons.work,
-                size: 30,
-                color: Theme.of(context).colorScheme.primary,
-              ),
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: Theme.of(
+                context,
+              ).colorScheme.primary.withValues(alpha: 0.1),
+              borderRadius: BorderRadius.circular(12),
             ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    position,
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).colorScheme.onSurface,
-                    ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Row(
+              spacing: 16,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: 60,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.primary.withValues(alpha: 0.1),
+                    borderRadius: BorderRadius.circular(8),
                   ),
-                  const SizedBox(height: 4),
-                  Text(
-                    '$company | $period',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Theme.of(
-                        context,
-                      ).colorScheme.onSurface.withValues(alpha: 0.7),
-                      fontWeight: FontWeight.w500,
-                    ),
+                  child: Icon(
+                    Icons.work,
+                    size: 30,
+                    color: Theme.of(context).colorScheme.primary,
                   ),
-                  const SizedBox(height: 8),
-                  Text(
-                    description,
-                    style: TextStyle(
-                      fontSize: 14,
-                      height: 1.4,
-                      color: Theme.of(
-                        context,
-                      ).colorScheme.onSurface.withValues(alpha: 0.8),
-                    ),
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        position,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.onSurface,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        '$company | $period',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.onSurface.withValues(alpha: 0.7),
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        description,
+                        style: TextStyle(
+                          fontSize: 14,
+                          height: 1.4,
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.onSurface.withValues(alpha: 0.8),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

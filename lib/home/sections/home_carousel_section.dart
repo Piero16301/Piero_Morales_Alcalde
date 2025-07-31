@@ -56,13 +56,10 @@ class HomeCarouselItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Card(
       margin: isMobile
           ? AppProperties.mobilePadding
           : AppProperties.desktopPadding,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-      ),
       clipBehavior: Clip.antiAlias,
       child: Stack(
         children: [
@@ -74,13 +71,13 @@ class HomeCarouselItem extends StatelessWidget {
             ),
           ),
           Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Color.fromRGBO(143, 163, 163, 0.8),
-                  Color.fromRGBO(107, 125, 125, 0.8),
+                  Colors.grey.withValues(alpha: 0.3),
+                  Colors.grey.withValues(alpha: 0.7),
                 ],
               ),
             ),

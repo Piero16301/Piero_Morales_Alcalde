@@ -21,7 +21,7 @@ class AppTheme {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
       ),
-      elevation: 0,
+      elevation: 4,
     ),
     inputDecorationTheme: const InputDecorationTheme(
       border: OutlineInputBorder(),
@@ -47,7 +47,7 @@ class AppTheme {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
       ),
-      elevation: 0,
+      elevation: 4,
     ),
     inputDecorationTheme: const InputDecorationTheme(
       border: OutlineInputBorder(),
