@@ -1,5 +1,5 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
 import 'package:piero_morales_alcalde/app/app.dart';
 import 'package:piero_morales_alcalde/home/home.dart';
 import 'package:user_api/user_api.dart';
@@ -12,7 +12,6 @@ void main() {
   group('App', () {
     late IUserApi mockUserApi;
     late UserRepository userRepository;
-    late MockUser mockUser;
 
     setUpAll(() async {
       setupFirebaseAuthMocks();
@@ -21,16 +20,19 @@ void main() {
     setUp(() {
       mockUserApi = MockUserApi();
       userRepository = UserRepository(userApi: mockUserApi);
-      mockUser = MockUser();
-
-      // Mock FirebaseAuth.instance to return a user (authenticated state)
-      when(() => mockUser.uid).thenReturn('test-uid');
-      when(() => mockUser.email).thenReturn('test@example.com');
     });
 
     testWidgets('renders HomePage', (tester) async {
       await tester.pumpWidget(AppPage(userRepository: userRepository));
-      await tester.pumpAndSettle();
+
+      await tester.pump();
+
+      expect(find.byType(MaterialApp), findsOneWidget);
+
+      for (var i = 0; i < 5; i++) {
+        await tester.pump(const Duration(milliseconds: 100));
+      }
+
       expect(find.byType(HomePage), findsOneWidget);
     });
   });
