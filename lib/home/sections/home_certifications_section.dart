@@ -209,46 +209,44 @@ class _HomeCertificationsSectionState extends State<HomeCertificationsSection> {
     required Color visualColor,
     required String formattedDate,
   }) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Row(
       children: [
-        Row(
-          children: [
-            Expanded(
-              child: Text(
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
                 certification['name']!,
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 14,
                   fontWeight: FontWeight.w600,
                   color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),
-            ),
-            Container(
-              width: 24,
-              height: 24,
-              decoration: BoxDecoration(
-                color: visualColor,
-                shape: BoxShape.circle,
+              const SizedBox(height: 4),
+              Text(
+                certification['organization']!,
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
               ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 8),
-        Text(
-          certification['organization']!,
-          style: TextStyle(
-            fontSize: 14,
-            color: Theme.of(context).colorScheme.primary,
+              const SizedBox(height: 4),
+              Text(
+                formattedDate,
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
+                ),
+              ),
+            ],
           ),
         ),
-        const SizedBox(height: 4),
-        Text(
-          formattedDate,
-          style: TextStyle(
-            fontSize: 14,
-            color: Theme.of(context).colorScheme.onSurfaceVariant,
-          ),
+        const SizedBox(width: 16),
+        Icon(
+          Icons.verified,
+          color: visualColor,
+          size: 24,
         ),
       ],
     );
@@ -278,7 +276,7 @@ class _HomeCertificationsSectionState extends State<HomeCertificationsSection> {
           child: Text(
             certification['organization']!,
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 13,
               color: Theme.of(context).colorScheme.primary,
             ),
           ),
@@ -288,24 +286,17 @@ class _HomeCertificationsSectionState extends State<HomeCertificationsSection> {
           child: Text(
             formattedDate,
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 13,
               color: Theme.of(context).colorScheme.onSurfaceVariant,
             ),
           ),
         ),
         Expanded(
           flex: 2,
-          child: Row(
-            children: [
-              Container(
-                width: 24,
-                height: 24,
-                decoration: BoxDecoration(
-                  color: visualColor,
-                  shape: BoxShape.circle,
-                ),
-              ),
-            ],
+          child: Icon(
+            Icons.verified,
+            color: visualColor,
+            size: 24,
           ),
         ),
       ],

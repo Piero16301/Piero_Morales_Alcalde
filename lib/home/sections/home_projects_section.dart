@@ -18,13 +18,10 @@ class _HomeProjectsSectionState extends State<HomeProjectsSection> {
   static const Map<String, List<String>> _projectImages = {
     'Project Alpha': [
       'https://picsum.photos/300/200?random=1',
-      'https://picsum.photos/300/200?random=2',
-      'https://picsum.photos/300/200?random=3',
     ],
     'Project Beta': [
       'https://picsum.photos/300/200?random=4',
       'https://picsum.photos/300/200?random=5',
-      'https://picsum.photos/300/200?random=6',
     ],
     'Project Gamma': [
       'https://picsum.photos/300/200?random=7',
@@ -270,104 +267,104 @@ class _HomeProjectsSectionState extends State<HomeProjectsSection> {
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: widget.isMobile
-            ? Row(
-                spacing: 16,
+            ? Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                    flex: 2,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Text(
-                                name,
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: Theme.of(
-                                    context,
-                                  ).colorScheme.onSurface,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 8,
-                                vertical: 4,
-                              ),
-                              decoration: BoxDecoration(
-                                color: statusInfo.backgroundColor,
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: Text(
-                                statusInfo.text,
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w600,
-                                  color: statusInfo.color,
-                                ),
-                              ),
-                            ),
-                          ],
+                  // Título y estado ocupando todo el ancho
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          name,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.onSurface,
+                          ),
                         ),
-                        const SizedBox(height: 4),
-                        Row(
-                          children: [
-                            Text(
-                              category,
-                              style: TextStyle(
-                                fontSize: 14,
-                                color:
-                                    Theme.of(
-                                      context,
-                                    ).colorScheme.onSurface.withValues(
-                                      alpha: 0.7,
-                                    ),
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            const SizedBox(width: 8),
-                            Text(
-                              '|',
-                              style: TextStyle(
-                                fontSize: 14,
-                                color:
-                                    Theme.of(
-                                      context,
-                                    ).colorScheme.onSurface.withValues(
-                                      alpha: 0.5,
-                                    ),
-                              ),
-                            ),
-                            const SizedBox(width: 8),
-                            Expanded(
-                              child: Row(
-                                children: techIcons.take(3).map((icon) {
-                                  return Padding(
-                                    padding: const EdgeInsets.only(
-                                      right: 6,
-                                    ),
-                                    child: Icon(
-                                      icon,
-                                      size: 16,
-                                      color: Theme.of(
-                                        context,
-                                      ).colorScheme.primary,
-                                    ),
-                                  );
-                                }).toList(),
-                              ),
-                            ),
-                          ],
+                      ),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
                         ),
-                        const SizedBox(height: 8),
-                        Text(
-                          description.length > 100
-                              ? '${description.substring(0, 97)}...'
+                        decoration: BoxDecoration(
+                          color: statusInfo.backgroundColor,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Text(
+                          statusInfo.text,
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                            color: statusInfo.color,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  // Categoría y tecnologías ocupando todo el ancho
+                  Row(
+                    children: [
+                      Text(
+                        category,
+                        style: TextStyle(
+                          fontSize: 14,
+                          color:
+                              Theme.of(
+                                context,
+                              ).colorScheme.onSurface.withValues(
+                                alpha: 0.7,
+                              ),
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Text(
+                        '|',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color:
+                              Theme.of(
+                                context,
+                              ).colorScheme.onSurface.withValues(
+                                alpha: 0.5,
+                              ),
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: Row(
+                          children: techIcons.map((icon) {
+                            return Padding(
+                              padding: const EdgeInsets.only(
+                                right: 6,
+                              ),
+                              child: Icon(
+                                icon,
+                                size: 16,
+                                color: Theme.of(
+                                  context,
+                                ).colorScheme.primary,
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                  // Descripción e imágenes al mismo nivel en un Row
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          description.length > 120
+                              ? '${description.substring(0, 117)}...'
                               : description,
                           style: TextStyle(
                             fontSize: 14,
@@ -379,21 +376,23 @@ class _HomeProjectsSectionState extends State<HomeProjectsSection> {
                           maxLines: 4,
                           overflow: TextOverflow.ellipsis,
                         ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 200,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      color: Theme.of(
-                        context,
-                      ).colorScheme.primary.withValues(alpha: 0.05),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: HomeImageCarousel(
-                      images: _projectImages[name] ?? [],
-                    ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Container(
+                          height: 80,
+                          decoration: BoxDecoration(
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.primary.withValues(alpha: 0.05),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: HomeImageCarousel(
+                            images: _projectImages[name] ?? [],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               )
