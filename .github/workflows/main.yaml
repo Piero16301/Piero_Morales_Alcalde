@@ -59,10 +59,20 @@ jobs:
     steps:
       - name: 📚 Git Checkout
         uses: actions/checkout@v4
-      - name: 🐦 Setup Flutter
+      - name: � Cache Flutter SDK
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ runner.tool_cache }}/flutter
+            ~/.pub-cache
+          key: ${{ runner.os }}-flutter-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-flutter-
+      - name: �🐦 Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: "stable"
+          cache: true
       - name: 🔧 Create firebase_options.dart file
         run: |
           cat > lib/firebase_options.dart << 'EOF'
@@ -119,10 +129,20 @@ jobs:
     steps:
       - name: 📚 Git Checkout
         uses: actions/checkout@v4
-      - name: 🐦 Setup Flutter
+      - name: � Cache Flutter SDK
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ runner.tool_cache }}/flutter
+            ~/.pub-cache
+          key: ${{ runner.os }}-flutter-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-flutter-
+      - name: �🐦 Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: "stable"
+          cache: true
       - name: 🔧 Create firebase_options.dart file
         run: |
           cat > lib/firebase_options.dart << 'EOF'
