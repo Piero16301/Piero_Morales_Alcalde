@@ -34,9 +34,9 @@ class HomeSwitcherPage extends StatelessWidget {
       appBar: AppBar(
         title: isMobile ? const HomeMobileAppBar() : const HomeDesktopAppBar(),
       ),
-      drawer: const HomeDrawer(),
+      drawer: isMobile ? const HomeDrawer() : null,
       body: ListView.separated(
-        itemCount: 6,
+        itemCount: 7,
         itemBuilder: (context, index) {
           return switch (index) {
             0 => HomeCarouselSection(isMobile: isMobile),
@@ -45,6 +45,7 @@ class HomeSwitcherPage extends StatelessWidget {
             3 => HomeExperienceSection(isMobile: isMobile),
             4 => HomeProjectsSection(isMobile: isMobile),
             5 => HomeCertificationsSection(isMobile: isMobile),
+            6 => HomeContactSection(isMobile: isMobile),
             _ => const SizedBox.shrink(),
           };
         },

@@ -58,136 +58,34 @@ class HomeDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
-            title: const Text('Skills'),
+            leading: const Icon(Icons.psychology, size: 20),
+            title: const Text('Skills', style: TextStyle(fontSize: 14)),
             onTap: () => Navigator.pop(context),
           ),
           ListTile(
-            title: const Text('Education'),
+            leading: const Icon(Icons.school, size: 20),
+            title: const Text('Education', style: TextStyle(fontSize: 14)),
             onTap: () => Navigator.pop(context),
           ),
           ListTile(
-            title: const Text('Experience'),
+            leading: const Icon(Icons.work, size: 20),
+            title: const Text('Experience', style: TextStyle(fontSize: 14)),
             onTap: () => Navigator.pop(context),
           ),
           ListTile(
-            title: const Text('Projects'),
+            leading: const Icon(Icons.folder_open, size: 20),
+            title: const Text('Projects', style: TextStyle(fontSize: 14)),
             onTap: () => Navigator.pop(context),
           ),
           ListTile(
-            title: const Text('Certifications'),
+            leading: const Icon(Icons.verified, size: 20),
+            title: const Text('Certifications', style: TextStyle(fontSize: 14)),
             onTap: () => Navigator.pop(context),
           ),
-          const Divider(),
-          // Sección de contacto como footer
-          Container(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Contact Info',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black87,
-                  ),
-                ),
-                const SizedBox(height: 12),
-                Row(
-                  children: [
-                    const Icon(
-                      Icons.email_outlined,
-                      size: 18,
-                      color: Colors.grey,
-                    ),
-                    const SizedBox(width: 8),
-                    Expanded(
-                      child: Text(
-                        'piero.morales@example.com',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey[600],
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 8),
-                Row(
-                  children: [
-                    const Icon(
-                      Icons.phone_outlined,
-                      size: 18,
-                      color: Colors.grey,
-                    ),
-                    const SizedBox(width: 8),
-                    Text(
-                      '+51 999 888 777',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey[600],
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 8),
-                Row(
-                  children: [
-                    const Icon(
-                      Icons.location_on_outlined,
-                      size: 18,
-                      color: Colors.grey,
-                    ),
-                    const SizedBox(width: 8),
-                    Expanded(
-                      child: Text(
-                        'Lima, Perú',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey[600],
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 16),
-                // Redes sociales
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        debugPrint('Navegando a LinkedIn');
-                      },
-                      icon: const Icon(Icons.work_outline),
-                      tooltip: 'LinkedIn',
-                      iconSize: 24,
-                      color: Colors.blue[700],
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        debugPrint('Navegando a GitHub');
-                      },
-                      icon: const Icon(Icons.code),
-                      tooltip: 'GitHub',
-                      iconSize: 24,
-                      color: Colors.grey[700],
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        debugPrint('Navegando a WhatsApp');
-                      },
-                      icon: const Icon(Icons.message),
-                      tooltip: 'WhatsApp',
-                      iconSize: 24,
-                      color: Colors.green[600],
-                    ),
-                  ],
-                ),
-              ],
-            ),
+          ListTile(
+            leading: const Icon(Icons.contact_mail, size: 20),
+            title: const Text('Contact', style: TextStyle(fontSize: 14)),
+            onTap: () => Navigator.pop(context),
           ),
         ],
       ),
